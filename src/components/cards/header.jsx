@@ -55,7 +55,7 @@ class Header extends Component {
           <img src={glogo} width="200" />
         </div>
         {this.state.user !== false ? (
-          <div className="medium-6 large-6 cell">
+          <div className="medium-6 large-6 cell" style={{ marginTop: "50px" }}>
             <a
               id="signoutLink"
               onClick={() => {

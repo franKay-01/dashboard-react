@@ -60,10 +60,7 @@ class Home extends Component {
         >
           <TopHeader />
         </div>
-        <div
-          style={{ marginTop: "100px" }}
-          className="grid-x grid-padding-x align-spaced"
-        >
+        <div className="grid-x grid-padding-x align-spaced">
           <div
             style={{ marginLeft: "30px" }}
             className="small-12 medium-12 large-12 welcome_post"
