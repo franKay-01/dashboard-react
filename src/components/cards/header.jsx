@@ -47,7 +47,9 @@ class Header extends Component {
         <div
           className="medium-6 large-6 cell"
           onClick={() => {
-            history.push("/home");
+            if (Parse.User.current()) {
+              history.push("/home");
+            }
           }}
         >
           <img src={glogo} width="200" />
