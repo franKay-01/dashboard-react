@@ -1,5 +1,5 @@
 {
-  "name": "cryptic-dashboard",
+  "name": "cryptic-dashboard-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

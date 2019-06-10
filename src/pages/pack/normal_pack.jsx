@@ -208,7 +208,9 @@ class AllNormalPacksPage extends Component {
                 "https://cryptic-waters-41617.herokuapp.com/uploads/normal/react/" +
                 this.props.match.params.packId +
                 "/" +
-                this.state.userId
+                this.state.userId +
+                "/" +
+                btoa(window.location.href)
               }
             >
               <button className="create_button">

@@ -117,6 +117,7 @@ class HomePage extends Component {
   }
 
   render() {
+    console.log("LENGTH " + this.state.stories);
     return (
       <div className="App">
         <div

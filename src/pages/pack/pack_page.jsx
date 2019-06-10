@@ -282,7 +282,9 @@ class PackPage extends Component {
                   "/" +
                   this.props.match.params.projectId +
                   "/" +
-                  this.state.userId
+                  this.state.userId +
+                  "/" +
+                  btoa(window.location.href)
                 }
               >
                 <button className="create_button">

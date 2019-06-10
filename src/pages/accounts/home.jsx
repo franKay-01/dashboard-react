@@ -50,7 +50,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.accountType);
     // let projects = this.state.pageInfo.project;
     // console.log("PROJECTS " + projects);
     return (

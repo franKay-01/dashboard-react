@@ -614,6 +614,13 @@ button:focus {
   color: #a46580 !important;
 }
 
+.truncate_title {
+  white-space: nowrap;
+  width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #pageMask {
   display: block;
   position: fixed;

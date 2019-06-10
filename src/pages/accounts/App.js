@@ -19,12 +19,6 @@ class App extends Component {
       //initial with static sticker objects
       stickers: []
     };
-
-    this.handleClick = this.loginUser.bind(this);
-  }
-
-  loginUser() {
-    alert("USER LOGGED");
   }
 
   componentDidMount() {
