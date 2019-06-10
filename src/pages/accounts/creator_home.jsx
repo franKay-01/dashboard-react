@@ -90,10 +90,7 @@ class CreatorHome extends Component {
         >
           <TopHeader />
         </div>
-        <div
-          style={{ marginTop: "100px" }}
-          className="grid-x grid-padding-x align-spaced"
-        >
+        <div className="grid-x grid-padding-x align-spaced">
           <div
             style={{ marginLeft: "30px" }}
             className="small-12 medium-12 large-12 welcome_post"
@@ -157,59 +154,71 @@ class CreatorHome extends Component {
               </p>
             </button>
           </div>
-          {this.state.stories.length > 0
-            ? this.state.stories.map(story =>
-                this.state.artworks.map(artwork =>
-                  story.id === artwork.story ? (
-                    <a
-                      key={story.id}
-                      className="medium-3 large-3 cell card-zoom icons"
-                      onClick={this.handleClickEvent("normalStory", story.id)}
-                    >
-                      <ItemDisplayIndication color="#ffb12f" />
-                      <center>
-                        <img
-                          className="btn_pack_icon"
-                          src={artwork.image}
-                          style={{ height: "200px", width: "250px" }}
-                        />
-                      </center>
-                      <div className="story_title truncate_story_title">
-                        {story.title}
-                      </div>
+          {this.state.stories.length > 0 ? (
+            this.state.stories.map(story =>
+              this.state.artworks.map(artwork =>
+                story.id === artwork.story ? (
+                  <a
+                    key={story.id}
+                    className="medium-3 large-3 cell card-zoom icons"
+                    onClick={this.handleClickEvent("normalStory", story.id)}
+                  >
+                    <ItemDisplayIndication color="#ffb12f" />
+                    <center>
+                      <img
+                        className="btn_pack_icon"
+                        src={artwork.image}
+                        style={{ height: "200px", width: "250px" }}
+                      />
+                    </center>
+                    <div className="story_title truncate_story_title">
+                      {story.title}
+                    </div>
 
-                      <div className="story_summary truncate_summary">
-                        {story.summary}
-                      </div>
-                    </a>
-                  ) : null
-                )
+                    <div className="story_summary truncate_summary">
+                      {story.summary}
+                    </div>
+                  </a>
+                ) : null
               )
-            : null}
+            )
+          ) : (
+            <div className="medium-3 large-3 cell card-zoom icons ">
+              <p className="none" style={{ margin: "150px 80px" }}>
+                <b>No Packs</b>
+              </p>
+            </div>
+          )}
 
-          {this.state.noArtStories.length > 0
-            ? this.state.noArtStories.map(story => (
-                <a
-                  key={story.id}
-                  className="medium-3 large-3 cell card-zoom icons"
-                  onClick={this.handleClickEvent("normalStory", story.id)}
-                >
-                  <ItemDisplayIndication color="#ffb12f" />
-                  <center>
-                    <p style={{ margin: "100px 80px" }} className="none">
-                      <b>No Artwork</b>
-                    </p>
-                  </center>
-                  <div className="story_title truncate_story_title">
-                    {story.title}
-                  </div>
+          {this.state.noArtStories.length > 0 ? (
+            this.state.noArtStories.map(story => (
+              <a
+                key={story.id}
+                className="medium-3 large-3 cell card-zoom icons"
+                onClick={this.handleClickEvent("normalStory", story.id)}
+              >
+                <ItemDisplayIndication color="#ffb12f" />
+                <center>
+                  <p style={{ margin: "100px 80px" }} className="none">
+                    <b>No Artwork</b>
+                  </p>
+                </center>
+                <div className="story_title truncate_story_title">
+                  {story.title}
+                </div>
 
-                  <div className="story_summary truncate_summary">
-                    {story.summary}
-                  </div>
-                </a>
-              ))
-            : null}
+                <div className="story_summary truncate_summary">
+                  {story.summary}
+                </div>
+              </a>
+            ))
+          ) : (
+            <div className="medium-3 large-3 cell card-zoom icons ">
+              <p className="none" style={{ margin: "150px 80px" }}>
+                <b>No Packs</b>
+              </p>
+            </div>
+          )}
 
           {this.state.packs.length > 0 ? (
             this.state.packs.map(pack => (
@@ -240,7 +249,11 @@ class CreatorHome extends Component {
               </a>
             ))
           ) : (
-            <p>NO PACKS</p>
+            <div className="medium-3 large-3 cell card-zoom icons ">
+              <p className="none" style={{ margin: "150px 80px" }}>
+                <b>No Packs</b>
+              </p>
+            </div>
           )}
         </div>
       </div>
