@@ -128,7 +128,11 @@ class loginCard extends Component {
                 id="errorField"
               />
               <input
-                style={{ marginTop: "30px", font: "1.5rem !important" }}
+                style={{
+                  marginTop: "30px",
+                  font: "1.5rem !important",
+                  color: "white"
+                }}
                 className="box"
                 placeholder="Email"
                 type="email"
@@ -143,7 +147,7 @@ class loginCard extends Component {
               <br />
               <input
                 className="box"
-                style={{ font: "1.5rem !important" }}
+                style={{ font: "1.5rem !important", color: "white" }}
                 placeholder="Password"
                 type="password"
                 name="password"
