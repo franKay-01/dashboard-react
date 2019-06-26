@@ -233,7 +233,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.adverts} url="/adverts/" />
+              <ViewAll
+                item={this.state.adverts}
+                projectId={this.props.match.params.projectId}
+                url="/adverts/"
+              />
             </div>
           </div>
           {/** Start of Advert Cards */}
@@ -255,7 +259,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.projects} url="/projects/" />
+              <ViewAll
+                item={this.state.projects}
+                projectId={this.props.match.params.projectId}
+                url="/projects/"
+              />
             </div>
           </div>
           {/** Start of Project Cards */}
@@ -277,7 +285,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.jokes} url="/projects/" />
+              <ViewAll
+                item={this.state.jokes}
+                projectId={this.props.match.params.projectId}
+                url="/stories/"
+              />
             </div>
             <div className="create_new" style={{ marginTop: "55px" }}>
               Quotes
@@ -296,7 +308,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.quotes} url="/projects/" />
+              <ViewAll
+                item={this.state.quotes}
+                projectId={this.props.match.params.projectId}
+                url="/stories/"
+              />
             </div>
           </div>
           {/** Start of Jokes & Quotes Cards */}
@@ -319,7 +335,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.news} url="/projects/" />
+              <ViewAll
+                item={this.state.news}
+                projectId={this.props.match.params.projectId}
+                url="/stories/"
+              />
             </div>
             <div className="create_new" style={{ marginTop: "55px" }}>
               History
@@ -338,7 +358,11 @@ class HomePage extends Component {
               ) : (
                 <p className="none_no_margin">None</p>
               )}
-              <ViewAll item={this.state.histories} url="/projects/" />
+              <ViewAll
+                item={this.state.histories}
+                projectId={this.props.match.params.projectId}
+                url="/stories/"
+              />
             </div>
           </div>
           {/** Start of Jokes & Quotes Cards */}
