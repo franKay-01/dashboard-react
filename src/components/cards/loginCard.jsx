@@ -94,7 +94,7 @@ class loginCard extends Component {
               {
                 this.setCookie("token", user.getSessionToken(), 30);
               }
-              console.log("USER " + JSON.stringify(user));
+              console.log("USER " + JSON.stringify(user.get("type")));
               if (user.get("type") === type.USER.ultimate) {
                 window.location = "/home";
               } else if (user.get("type") === type.USER.normal) {

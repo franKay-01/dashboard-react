@@ -154,107 +154,89 @@ class CreatorHome extends Component {
               </p>
             </button>
           </div>
-          {this.state.stories.length > 0 ? (
-            this.state.stories.map(story =>
-              this.state.artworks.map(artwork =>
-                story.id === artwork.story ? (
-                  <a
-                    key={story.id}
-                    className="medium-3 large-3 cell card-zoom icons"
-                    onClick={this.handleClickEvent("normalStory", story.id)}
-                  >
-                    <ItemDisplayIndication color="#ffb12f" />
-                    <center>
-                      <img
-                        className="btn_pack_icon"
-                        src={artwork.image}
-                        style={{ height: "200px", width: "250px" }}
-                      />
-                    </center>
-                    <div className="story_title truncate_story_title">
-                      {story.title}
-                    </div>
+          {this.state.stories.length > 0
+            ? this.state.stories.map(story =>
+                this.state.artworks.map(artwork =>
+                  story.id === artwork.story ? (
+                    <a
+                      key={story.id}
+                      className="medium-3 large-3 cell card-zoom icons"
+                      onClick={this.handleClickEvent("normalStory", story.id)}
+                    >
+                      <ItemDisplayIndication color="#ffb12f" />
+                      <center>
+                        <img
+                          className="btn_pack_icon"
+                          src={artwork.image}
+                          style={{ height: "200px", width: "250px" }}
+                        />
+                      </center>
+                      <div className="story_title truncate_story_title">
+                        {story.title}
+                      </div>
 
-                    <div className="story_summary truncate_summary">
-                      {story.summary}
-                    </div>
-                  </a>
-                ) : null
+                      <div className="story_summary truncate_summary">
+                        {story.summary}
+                      </div>
+                    </a>
+                  ) : null
+                )
               )
-            )
-          ) : (
-            <div className="medium-3 large-3 cell card-zoom icons ">
-              <p className="none" style={{ margin: "150px 80px" }}>
-                <b>No Packs</b>
-              </p>
-            </div>
-          )}
+            : null}
 
-          {this.state.noArtStories.length > 0 ? (
-            this.state.noArtStories.map(story => (
-              <a
-                key={story.id}
-                className="medium-3 large-3 cell card-zoom icons"
-                onClick={this.handleClickEvent("normalStory", story.id)}
-              >
-                <ItemDisplayIndication color="#ffb12f" />
-                <center>
-                  <p style={{ margin: "100px 80px" }} className="none">
-                    <b>No Artwork</b>
-                  </p>
-                </center>
-                <div className="story_title truncate_story_title">
-                  {story.title}
-                </div>
-
-                <div className="story_summary truncate_summary">
-                  {story.summary}
-                </div>
-              </a>
-            ))
-          ) : (
-            <div className="medium-3 large-3 cell card-zoom icons ">
-              <p className="none" style={{ margin: "150px 80px" }}>
-                <b>No Packs</b>
-              </p>
-            </div>
-          )}
-
-          {this.state.packs.length > 0 ? (
-            this.state.packs.map(pack => (
-              <a
-                key={pack.id}
-                className="medium-3 large-3 cell card-zoom icons "
-                onClick={this.handleClickEvent("normalPacks", pack.id)}
-              >
-                <ItemDisplayIndication color="#28ff7e" />
-                {pack.art !== "" ? (
+          {this.state.noArtStories.length > 0
+            ? this.state.noArtStories.map(story => (
+                <a
+                  key={story.id}
+                  className="medium-3 large-3 cell card-zoom icons"
+                  onClick={this.handleClickEvent("normalStory", story.id)}
+                >
+                  <ItemDisplayIndication color="#ffb12f" />
                   <center>
-                    <img
-                      className="pack_artwork"
-                      src={pack.art}
-                      style={{ height: "250px" }}
-                    />
-                  </center>
-                ) : (
-                  <center>
-                    <p className="none">
+                    <p style={{ margin: "100px 80px" }} className="none">
                       <b>No Artwork</b>
                     </p>
                   </center>
-                )}
-                <div className="name_tag" style={{ position: "unset" }}>
-                  <p className="pack_name_text">{pack.name}</p>
-                </div>
-              </a>
-            ))
-          ) : (
-            <div className="medium-3 large-3 cell card-zoom icons ">
-              <p className="none" style={{ margin: "150px 80px" }}>
-                <b>No Packs</b>
-              </p>
-            </div>
-          )}
+                  <div className="story_title truncate_story_title">
+                    {story.title}
+                  </div>
+
+                  <div className="story_summary truncate_summary">
+                    {story.summary}
+                  </div>
+                </a>
+              ))
+            : null}
+
+          {this.state.packs.length > 0
+            ? this.state.packs.map(pack => (
+                <a
+                  key={pack.id}
+                  className="medium-3 large-3 cell card-zoom icons "
+                  onClick={this.handleClickEvent("normalPacks", pack.id)}
+                >
+                  <ItemDisplayIndication color="#28ff7e" />
+                  {pack.art !== "" ? (
+                    <center>
+                      <img
+                        className="pack_artwork"
+                        src={pack.art}
+                        style={{ height: "250px" }}
+                      />
+                    </center>
+                  ) : (
+                    <center>
+                      <p className="none">
+                        <b>No Artwork</b>
+                      </p>
+                    </center>
+                  )}
+                  <div className="name_tag" style={{ position: "unset" }}>
+                    <p className="pack_name_text">{pack.name}</p>
+                  </div>
+                </a>
+              ))
+            : null}
         </div>
       </div>
     );
