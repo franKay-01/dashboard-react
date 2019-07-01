@@ -193,6 +193,7 @@ class HomePage extends Component {
                 story.type === type.STORY_TYPE.chat_single ? (
                   <GroupCards
                     key={story.id}
+                    projectId={this.props.match.params.projectId}
                     name={story.name}
                     itemId={story.id}
                     destination="story"
@@ -227,6 +228,7 @@ class HomePage extends Component {
                     key={advert.id}
                     name={advert.name}
                     itemId={advert.id}
+                    projectId={this.props.match.params.projectId}
                     destination="advert"
                   />
                 ))
@@ -252,6 +254,7 @@ class HomePage extends Component {
                   <GroupCards
                     key={project.id}
                     name={project.name}
+                    projectId={this.props.match.params.projectId}
                     itemId={project.id}
                     destination="project"
                   />
@@ -279,6 +282,7 @@ class HomePage extends Component {
                     key={joke.id}
                     name={joke.name}
                     itemId={joke.id}
+                    projectId={this.props.match.params.projectId}
                     destination="story"
                   />
                 ))
@@ -300,6 +304,7 @@ class HomePage extends Component {
                 this.state.quotes.map(quote => (
                   <GroupCards
                     key={quote.id}
+                    projectId={this.props.match.params.projectId}
                     name={quote.name}
                     itemId={quote.id}
                     destination="story"
@@ -327,6 +332,7 @@ class HomePage extends Component {
                 this.state.news.map(newsItem => (
                   <GroupCards
                     key={newsItem.id}
+                    projectId={this.props.match.params.projectId}
                     name={newsItem.name}
                     itemId={newsItem.id}
                     destination="story"
@@ -349,6 +355,7 @@ class HomePage extends Component {
               {this.state.histories.length > 0 ? (
                 this.state.histories.map(history => (
                   <GroupCards
+                    projectId={this.props.match.params.projectId}
                     key={history.id}
                     name={history.name}
                     itemId={history.id}

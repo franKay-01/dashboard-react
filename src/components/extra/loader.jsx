@@ -20,7 +20,7 @@ class Loader extends Component {
         style={{
           zIndex: "10",
           position: "fixed",
-          margin: "20% 45%"
+          margin: "10% 45%"
         }}
       >
         <PropagateLoader

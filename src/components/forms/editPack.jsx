@@ -109,7 +109,7 @@ class EditPack extends Component {
     let id = this.props.projectId;
     let packId = this.props.packId;
     let url = this.props.url;
-    console.log("INITIAL" + url);
+
     url = btoa(url);
 
     console.log("UPDATED" + url);

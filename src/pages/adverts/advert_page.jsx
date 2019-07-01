@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import history from "../../history";
 import Parse from "parse";
+import $ from "jquery";
 import "../../App.css";
 import "../../css/myStyle.css";
 import TopHeader from "../../components/cards/header";
@@ -17,6 +18,9 @@ class PackPage extends Component {
     super(props);
 
     this.state = {
+      url: "",
+      userId: "",
+      imageURL: "",
       advertId: "",
       title: "",
       description: "",
@@ -33,9 +37,19 @@ class PackPage extends Component {
     };
   }
 
+  handleChangeTitle = event => {
+    this.setState({ title: event.target.value });
+  };
+
+  handleChangeDescription = event => {
+    this.setState({ description: event.target.value });
+  };
+
   handleClickButton(item) {
     let id = this.props.match.params.projectId;
     let advertId = this.props.match.params.advertId;
+    let url = this.state.url;
+    let images = this.state.images;
 
     return function() {
       history.push({
@@ -44,31 +58,71 @@ class PackPage extends Component {
         state: {
           element: item,
           projectId: id,
-          itemId: advertId,
-          currentType: "pack"
+          url: url,
+          images: images,
+          itemId: advertId
         }
       });
     };
   }
 
-  async componentDidMount() {
-    let id = this.props.match.params.projectId;
+  submitAdvert = async event => {
+    event.preventDefault();
+    let title = this.state.title;
+    let description = this.state.description;
     let advertId = this.props.match.params.advertId;
-    var currentUser = Parse.User.current();
+    let currentUser = Parse.User.current();
 
     if (currentUser) {
       this.setState({
         loading: true,
         mask: "block"
       });
+
+      const response = await Parse.Cloud.run("updateAdvertDetails", {
+        advertId: advertId,
+        title: title,
+        description: description
+      });
+
+      let advertfeed = {};
+      advertfeed = await response.data;
+
+      this.setState({
+        title: advertfeed.ads.title,
+        description: advertfeed.ads.description,
+        loading: false,
+        mask: "none"
+      });
+    } else {
+      history.push("/");
+    }
+  };
+
+  async componentDidMount() {
+    let id = this.props.match.params.projectId;
+    let advertId = this.props.match.params.advertId;
+    let currentUser = Parse.User.current();
+    let url = window.location.href;
+    url = btoa(url);
+
+    if (currentUser) {
+      this.setState({
+        loading: true,
+        mask: "block"
+      });
+
       const response = await Parse.Cloud.run("getAdvertDetails", {
         advertId: advertId,
         projectId: id
       });
+
       let advertfeed = {};
       advertfeed = await response.data;
-      console.log(JSON.stringify(advertfeed));
+
       this.setState({
+        url: url,
+        userId: currentUser.id,
         advertId: advertfeed.ads.id,
         title: advertfeed.ads.title,
         description: advertfeed.ads.description,
@@ -115,6 +169,7 @@ class PackPage extends Component {
               placeholder="Title"
               class="box_2 advert_title"
               name="title"
+              onChange={this.handleChangeTitle}
               value={this.state.title}
             />
             <br />
@@ -122,9 +177,10 @@ class PackPage extends Component {
               AD Description:
             </label>
             <input
-              placeholder="Title"
+              placeholder="Ad Description"
               class="box_2 advert_title"
-              name="title"
+              name="description"
+              onChange={this.handleChangeDescription}
               value={this.state.description}
             />
             <br />
@@ -137,12 +193,13 @@ class PackPage extends Component {
                     style={{ width: "150px" }}
                     src={sticker.image}
                     alt="Banner"
+                    key={sticker.id}
                   />
                 ))
               : null}
             <br />
+
             <a
-              style={{ marginTop: "20px" }}
               onClick={this.handleClickButton("addArtWork")}
               className="preview_2"
             >
@@ -155,9 +212,9 @@ class PackPage extends Component {
               />
             </a>
             <br />
-            {this.state.link !== false ? (
+            {this.state.link === false ? (
               <a
-                onClick={this.handleClickButton("addArtWork")}
+                onClick={this.handleClickButton("addAdvertLink")}
                 className="preview_2"
               >
                 Add Link&nbsp;&nbsp;
@@ -170,10 +227,20 @@ class PackPage extends Component {
               </a>
             ) : (
               <a
-                onClick={this.handleClickButton("addArtWork")}
+                onClick={() => {
+                  this.setState({
+                    error: "You can have only one (1) link per advert"
+                  });
+                  setTimeout(() => {
+                    $("#linkError").show();
+                  }, 1000);
+                  setTimeout(() => {
+                    $("#linkError").hide();
+                  }, 5000);
+                }}
                 className="preview_2"
               >
-                Add Links&nbsp;&nbsp;
+                Add Link&nbsp;&nbsp;
                 <FontAwesomeIcon
                   className="fa-5x"
                   style={{ color: "#cca3b2", fontSize: "1.5rem" }}
@@ -183,10 +250,21 @@ class PackPage extends Component {
               </a>
             )}
             <br />
+            <div
+              id="linkError"
+              style={{
+                color: "#ff0000b3",
+                fontWeight: "bolder",
+                display: "none"
+              }}
+            >
+              {this.state.error}
+            </div>
+            <br />
             <span>
               <button
                 style={{ color: "#a46580", marginTop: "20px" }}
-                onClick={this.submitPack}
+                onClick={this.submitAdvert}
                 className="create"
               >
                 Update

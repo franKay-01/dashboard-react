@@ -74,7 +74,7 @@ class AllAdvertPage extends Component {
         <Loader loading={this.state.loading} />
         <div className="grid-x grid-padding-x align-spaced">
           <span className="medium-12 large-12 welcome_post">
-            <b>All Members</b>
+            <b>All Adverts</b>
           </span>
           {/** Menu Bar */}
           <div className="medium-3 large-3 login_card cell">
@@ -119,7 +119,7 @@ class AllAdvertPage extends Component {
                           src={advert.image}
                         />
                       ) : (
-                        <p className="none" style={{ margin: "150px 80px" }}>
+                        <p style={{ padding: "100px" }}>
                           <b>No Artwork</b>
                         </p>
                       )}

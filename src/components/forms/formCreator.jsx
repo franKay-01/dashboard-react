@@ -59,6 +59,8 @@ import ChooseArtOption from "../extra/chooseOption";
 import PublishItem from "./publishItem";
 import CuratedSelection from "./curatedSelection";
 import RemoveCurated from "./removeCurated";
+import AdvertImageForm from "./advertImageForm";
+import AdvertLinkForm from "./advertLinkForm";
 
 class FormCreator extends Component {
   constructor(props) {
@@ -108,6 +110,26 @@ class FormCreator extends Component {
           {this.props.location.state.element === "member" ? (
             <>
               <MemberForm />
+            </>
+          ) : null}
+
+          {this.props.location.state.element === "addAdvertLink" ? (
+            <>
+              <AdvertLinkForm
+                advertId={this.props.location.state.itemId}
+                projectId={this.props.location.state.projectId}
+              />
+            </>
+          ) : null}
+
+          {this.props.location.state.element === "addArtWork" ? (
+            <>
+              <AdvertImageForm
+                advertId={this.props.location.state.itemId}
+                images={this.props.location.state.images}
+                url={this.props.location.state.url}
+                projectId={this.props.location.state.projectId}
+              />
             </>
           ) : null}
 
