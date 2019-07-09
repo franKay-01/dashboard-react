@@ -77,7 +77,8 @@ class AdvertForm extends Component {
           projectId: this.props.projectId
         }).then(function(response) {
           if (response.responseCode === 0) {
-            history.push("/open/project/" + projectId);
+            let advert = response.data;
+            history.push("/advert/" + advert.id + "/" + projectId);
           }
         });
       } else {

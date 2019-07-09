@@ -276,7 +276,9 @@ class PackPage extends Component {
                 type="button"
                 id="btnCancel"
                 className="cancel"
-                onClick={this.handleReturnButton()}
+                onClick={() => {
+                  history.push("/adverts/" + this.props.match.params.projectId);
+                }}
               >
                 Back
               </button>
