@@ -1,17 +1,17 @@
 const parse_dev_server = {
-  appId: "d55f9778-9269-40c2-84a2-e0caaf2ad87a",
+  appId: "#",
   url: "https://cryptic-waters-41617.herokuapp.com/parse/"
 };
 
 //Beta Staging Server
 const parse_staging_server = {
-  appId: "d55f9778-9269-40c2-84a2-e0caaf2ad87a",
+  appId: "#",
   url: "https://cryptic-waters-41617.herokuapp.com/parse/"
 };
 
 //Beta Production Server
 const parse_prod_server = {
-  appId: "d55f9778-9269-40c2-84a2-e0caaf2ad87a",
+  appId: "#",
   url: "https://cryptic-waters-41617.herokuapp.com/parse/"
 };
 
